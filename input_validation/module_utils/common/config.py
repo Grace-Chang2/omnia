@@ -15,25 +15,26 @@
 from datetime import datetime
 import os
 
-omnia_log = '/var/log/omnia'
+omnia_log = '/opt/omnia/log/core/playbooks/input_validator/'
 
 module_log_dir = {
-    "omnia": omnia_log + "/_"+ datetime.now().strftime('_%d-%m-%Y.log')
+    "input_validator_log": omnia_log + "/_"+ datetime.now().strftime('_%d-%m-%Y.log')
 }
 
-# dict to hold the file names. If any file's name changes just change it here.
+# dict to hold the file names.
 files = {
-    "accelerator_config": "accelerator_config.yml",
+    # Not required files for now
+    # "accelerator_config": "accelerator_config.yml",
+    # "network_config": "network_config.yml",
+    # "rhsm_config": "rhsm_config.yml",
     "k8s_access_config": "k8s_access_config.yml",
     "local_repo_config": "local_repo_config.yml",
     "login_node_security_config": "login_node_security_config.yml",
-    "network_config": "network_config.yml",
     "network_spec": "network_spec.yml",
     "omnia_config": "omnia_config.yml",
     "passwordless_ssh_config": "passwordless_ssh_config.yml",
     "provision_config_credentials": "provision_config_credentials.yml",
     "provision_config": "provision_config.yml",
-    "rhsm_config": "rhsm_config.yml",
     "roce_plugin_config": "roce_plugin_config.yml",
     "security_config": "security_config.yml",
     "server_spec": "server_spec.yml",
