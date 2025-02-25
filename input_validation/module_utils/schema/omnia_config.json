@@ -51,7 +51,7 @@
       "type": "string",
       "pattern": "^$|^/?([a-zA-Z0-9_-]+(/?[a-zA-Z0-9_-]+)*)$"
     }
-},
+  },
   "required": [
      "ansible_config_file_path",
      "mariadb_password",
