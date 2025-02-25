@@ -320,7 +320,7 @@ def main():
                 input_file_path = yml_files_dic[name]
                 
             if input_file_path is None:
-                error_message = f"file not found in directory: {omnia_base_dir}/{project_name}"
+                error_message = f"file not found in directory: {omnia_base_dir}{project_name}"
                 logger.error(error_message)
                 module.fail_json(msg=error_message)
                 raise FileNotFoundError(error_message)

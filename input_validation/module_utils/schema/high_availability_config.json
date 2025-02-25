@@ -3,47 +3,6 @@
     "title": "High Availability Configuration",
     "type": "object",
     "properties": {
-        "k8s_head_node_ha": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "enable_k8s_ha": {
-                        "type": "boolean"
-                    },
-                    "virtual_ip_address": {
-                        "type": "string",
-                        "format": "ipv4"
-                    },
-                    "active_node_service_tags": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "passive_nodes": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "node_service_tags": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "required": [
-                    "enable_k8s_ha",
-                    "virtual_ip_address",
-                    "active_node_service_tags",
-                    "passive_nodes"
-                ]
-            }
-        },
         "oim_ha": {
             "type": "array",
             "items": {
@@ -144,10 +103,7 @@
                         "format": "ipv4"
                     },
                     "active_node_service_tags": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
+                        "type": "string"
                     },
                     "passive_nodes": {
                         "type": "array",
@@ -178,5 +134,31 @@
         "oim_ha",
         "service_node_ha",
         "slurm_head_node_ha"
-    ]
+    ],
+    "k8s_head_node_ha": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+                "enable_k8s_ha": {
+                    "type": "boolean"
+                },
+                "virtual_ip_address": {
+                    "type": "string",
+                    "format": "ipv4"
+                },
+                "active_node_service_tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "enable_k8s_ha",
+                "virtual_ip_address",
+                "active_node_service_tags"
+            ]
+        }
+    }
 }
