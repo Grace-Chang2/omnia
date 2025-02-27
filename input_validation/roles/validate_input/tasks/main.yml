@@ -12,13 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ---
-- name: Include variables
-  ansible.builtin.include_vars:
-    file: vars/vars.yml
-
 - name: Set omnia base directory
   ansible.builtin.set_fact:
     omnia_base_dir: "/opt/omnia"
+
+- name: Set messages
+  ansible.builtin.set_fact:
+    messages:
+      omnia_base_dir_not_exist: "The directory {{ omnia_base_dir }} does not exist."
+      no_input_directories_found: "No input directories found in {{ omnia_base_dir }}."
+      validation_success: "Successfully validated Omnia input config file(s)"
 
 - name: Check if omnia base directory exists
   ansible.builtin.stat:
