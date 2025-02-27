@@ -48,6 +48,7 @@ files = {
 
 # Tags and the files that will be run based off of it
 input_file_inventory = {
+    "high_availability": [files["high_availability_config"]],
     "scheduler": [files["omnia_config"], files["software_config"]],
     "provision": [
         files["provision_config_credentials"],
@@ -85,7 +86,8 @@ input_file_inventory = {
         files["k8s_access_config"],
         files["software_config"],
         files["storage_config"],
-        files["site_config"]
+        files["site_config"],
+        files["high_availability_config"]
     ],
 }
 
@@ -115,8 +117,8 @@ extensions = {
 }
 
 os_version_ranges = {
-    "rhel": ["8.6", "8.8"],
-    "rocky": ["8.6", "8.8"],  
+    "rhel": ["8.6", "8.8", "9.4"],
+    "rocky": ["8.6", "8.8", "9.4"],  
     "ubuntu": ["20.04", "24.04"] 
 }
 

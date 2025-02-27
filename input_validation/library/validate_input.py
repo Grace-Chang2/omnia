@@ -30,6 +30,8 @@ import validation_utils
 import config
 
 def createLogger(project_name, tag_name=None):
+    if '/' in project_name:
+        project_name = project_name.split('/')[-1]
     if tag_name:
         log_filename = f"{tag_name}_validation_omnia_{project_name}.log"
     else:
@@ -53,7 +55,7 @@ def main():
 
     module = AnsibleModule(argument_spec=module_args, supports_check_mode=True)
     omnia_base_dir = module.params["omnia_base_dir"]
-    project_name = module.params["project_name"]
+    project_name = module.params["project_name"].replace(omnia_base_dir, "")
     tag_names = eval(module.params["tag_names"])
     single_files = module.params["files"]
     
@@ -280,8 +282,8 @@ def main():
         logger.info(error_message)
         raise FileNotFoundError(error_message)
     
-    json_files = get_files_recursively(omnia_base_dir + "/" + project_name, extensions['json'])
-    yml_files = get_files_recursively(omnia_base_dir + "/" + project_name, extensions['yml'])
+    json_files = get_files_recursively(omnia_base_dir + project_name, extensions['json'])
+    yml_files = get_files_recursively(omnia_base_dir + project_name, extensions['yml'])
     schema_files = get_files_recursively(schema_base_file_path, extensions['json'])
 
     for file_path in json_files:
@@ -354,7 +356,7 @@ def main():
                     input_file_path = yml_files_dic[name]
 
                 if input_file_path is None:
-                    error_message = f"file not found in directory: {omnia_base_dir}/{project_name}"
+                    error_message = f"file not found in directory: {omnia_base_dir}{project_name}"
                     logger.error(error_message)
                     module.fail_json(msg=error_message)
                     raise FileNotFoundError(error_message)

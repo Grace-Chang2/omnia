@@ -16,9 +16,9 @@
   ansible.builtin.include_vars:
     file: vars/vars.yml
 
-- name: Get omnia base directory
+- name: Set omnia base directory
   ansible.builtin.set_fact:
-    omnia_base_dir: "{{ playbook_dir | dirname }}"
+    omnia_base_dir: "/opt/omnia"
 
 - name: Check if omnia base directory exists
   ansible.builtin.stat:
@@ -32,9 +32,9 @@
 
 - name: Find input directories
   ansible.builtin.find:
-    paths: "{{ omnia_base_dir }}"
+    paths: "/opt/omnia/input"
     file_type: directory
-    patterns: 'input'
+    patterns: 'project_default'
   register: found_directories
 
 - name: Check if input directories were found
@@ -44,7 +44,7 @@
 
 - name: Set input directory paths
   ansible.builtin.set_fact:
-    project_name: "{{ found_directories.files[0].path | basename }}"
+    project_name: "{{ found_directories.files[0].path }}"
 
 - name: Validate omnia input config
   validate_input:
