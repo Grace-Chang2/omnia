@@ -22,13 +22,9 @@ module_log_dir = {
 }
 
 # dict to hold the file names.
-# List of oot required files for now
-# accelerator_config, network_config, rhsm_config
 files = {
-    "high_availability_config": "high_availability_config.yml",
-    "accelerator_config": "accelerator_config.yml",
+    "high_availability_config": "high_availability_config.yml", 
     "network_config": "network_config.yml",
-    "rhsm_config": "rhsm_config.yml",
     "k8s_access_config": "k8s_access_config.yml",
     "local_repo_config": "local_repo_config.yml",
     "login_node_security_config": "login_node_security_config.yml",
